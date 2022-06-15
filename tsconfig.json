@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@components": ["components"],
-      "@service": ["service"],
+      "@components/*": ["components/*"],
+      "@service/*": ["service/*"],
     },
     "target": "es5",
     "outDir": "lib",
@@ -31,7 +31,8 @@
     "src"
   ],
   "exclude": [
-      "node_modules",
-      "lib"
+    "node_modules",
+    "lib",
+    ".storybook"
   ],
 }

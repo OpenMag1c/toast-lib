@@ -1,11 +1,13 @@
-import React from "react";
-import { Toast } from "components/Toast";
+import React, { FC } from "react";
 
 import { Container } from "./styled";
+import Toast from "@components/Toast";
 
-export const ToastList = () => {
-  <h1 style={{ color: "red" }}>
+const ToastList: FC = () => (
+  <Container>
     hello!
     <Toast />
-  </h1>;
-};
+  </Container>
+);
+
+export default ToastList;
