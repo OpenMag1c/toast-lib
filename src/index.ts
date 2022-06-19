@@ -1,9 +1,4 @@
-import Toast from '@components/Toast';
-import ToastList from '@components/ToastList';
-import styled from 'styled-components';
+import styled from "styled-components";
+import { Toast, ToastContainer } from "./components";
 
-export {
-  Toast,
-  ToastList,
-  styled
-}
+export { Toast, ToastContainer as ToastList, styled };

@@ -2,8 +2,15 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
+      "@/*": ["/*"],
       "@components/*": ["components/*"],
       "@service/*": ["service/*"],
+      "@assets/*": ["assets/*"],
+      "@themes/*": ["themes/*"],
+      "@icons/*": ["assets/icons/*"], 
+      "@constants/*": ["constants/*"], 
+      "@helpers/*": ["helpers/*"], 
+      "@hooks/*": ["hooks/*"], 
     },
     "target": "es5",
     "outDir": "lib",
