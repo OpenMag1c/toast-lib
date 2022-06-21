@@ -1,9 +1,9 @@
-import IToastStyle from "./IToastStyles";
+import { IToastStyle } from "./IToastStyles";
 import { ToastPosition } from "./enums/toastPosition";
 import { ToastDuration } from "./enums/toastDuration";
 import { ToastAnimation } from "./enums/toastAnimation";
 
-interface IToastConfig {
+export interface IToastConfig {
   position: ToastPosition;
   animation: ToastAnimation;
   duration: ToastDuration;
@@ -13,5 +13,3 @@ interface IToastConfig {
   errorStyle: IToastStyle;
   successStyle: IToastStyle;
 }
-
-export default IToastConfig;

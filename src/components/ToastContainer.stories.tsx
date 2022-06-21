@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { useToastService } from "@hooks/useToastService";
 import { defaultToastConfig } from "@constants/defaultToastConfig";
-import IToastConfig from "types/IToastConfig";
+import { IToastConfig } from "types/IToastConfig";
 import { ToastDuration } from "types/enums/toastDuration";
 import { ToastPosition } from "types/enums/toastPosition";
 import {
@@ -65,7 +65,7 @@ export const Test1 = Template.bind({});
 Test1.args = {
   config: {
     duration: ToastDuration.Quick,
-    position: ToastPosition.BottomLeft,
+    position: ToastPosition.BottomRight,
     animation: ToastAnimation.Movement,
     margin: 5,
     infoStyle: infoToastStyle,

@@ -1,9 +1,7 @@
 import { ToastCategory } from "./enums/toastCategory";
 
-interface IToast {
+export interface IToast {
   id: string;
   category: ToastCategory;
   text: string;
 }
-
-export default IToast;

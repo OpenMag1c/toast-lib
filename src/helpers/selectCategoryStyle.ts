@@ -1,9 +1,9 @@
-import IToastStyle from "types/IToastStyles";
+import { IToastStyle } from "types/IToastStyles";
 import questionLogo from "@icons/question.png";
 import warningLogo from "@icons/warning.png";
 import errorLogo from "@icons/malware.png";
 import successLogo from "@icons/check.png";
-import IToastConfig from "types/IToastConfig";
+import { IToastConfig } from "types/IToastConfig";
 import { ToastCategory } from "types/enums/toastCategory";
 
 type selectCategoryStyleType = (

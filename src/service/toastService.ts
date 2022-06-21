@@ -1,5 +1,5 @@
-import IToastConfig from "types/IToastConfig";
-import IToast from "types/IToast";
+import { IToastConfig } from "types/IToastConfig";
+import { IToast } from "types/IToast";
 import { defaultToastConfig } from "@constants/defaultToastConfig";
 
 export type toastCallType = (text: string) => void;

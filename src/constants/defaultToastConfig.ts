@@ -1,7 +1,7 @@
 import { ToastAnimation } from "types/enums/toastAnimation";
 import { ToastDuration } from "types/enums/toastDuration";
 import { ToastPosition } from "types/enums/toastPosition";
-import IToastConfig from "types/IToastConfig";
+import { IToastConfig } from "types/IToastConfig";
 import {
   errorToastStyle,
   infoToastStyle,

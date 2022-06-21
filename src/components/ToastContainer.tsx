@@ -1,10 +1,10 @@
 import React, { FC, useState, useEffect, useRef } from "react";
 
 import { Toast } from "@components/Toast";
-import IToast from "types/IToast";
+import { IToast } from "types/IToast";
 import { IToastService, toastActionType } from "@service/toastService";
-import ToastManager from "@service/toastManager";
-import IToastConfig from "types/IToastConfig";
+import { ToastManager } from "@service/toastManager";
+import { IToastConfig } from "types/IToastConfig";
 import { defaultToastConfig } from "@constants/defaultToastConfig";
 import { ErrorBoundary } from "./ErrorBoundary";
 

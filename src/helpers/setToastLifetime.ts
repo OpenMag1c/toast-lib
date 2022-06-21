@@ -1,4 +1,4 @@
-import { ToastDuration } from "../types/enums/toastDuration";
+import { ToastDuration } from "types/enums/toastDuration";
 
 export const getToastLifetime = (duration: ToastDuration) => {
   switch (duration) {

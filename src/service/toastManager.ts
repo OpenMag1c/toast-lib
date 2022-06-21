@@ -1,8 +1,8 @@
 import { defaultToastConfig } from "@constants/defaultToastConfig";
-import IToastConfig from "types/IToastConfig";
+import { IToastConfig } from "types/IToastConfig";
 import { IToastService, toastService } from "./toastService";
 
-const ToastManager = (function () {
+export const ToastManager = (function () {
   let service: IToastService;
 
   function createToastService(config?: IToastConfig): IToastService {
@@ -22,5 +22,3 @@ const ToastManager = (function () {
     },
   };
 })();
-
-export default ToastManager;

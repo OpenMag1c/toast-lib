@@ -1,4 +1,4 @@
-import IToastStyle from "types/IToastStyles";
+import { IToastStyle } from "types/IToastStyles";
 
 export const infoToastStyle: IToastStyle = {
   backgroundColor: "#8a2be2",

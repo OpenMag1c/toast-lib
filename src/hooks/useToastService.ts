@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { IToastService } from "@service/toastService";
-import IToastConfig from "types/IToastConfig";
-import ToastManager from "@service/toastManager";
+import { IToastConfig } from "types/IToastConfig";
+import { ToastManager } from "@service/toastManager";
 import { ToastCategory } from "types/enums/toastCategory";
-import { createToast } from "../helpers/createToast";
-import { getToastLifetime } from "../helpers/setToastLifetime";
+import { createToast } from "@helpers/createToast";
+import { getToastLifetime } from "@helpers/setToastLifetime";
 
 export type useToastServiceType = (config?: IToastConfig) => {
   info: (text: string) => void;

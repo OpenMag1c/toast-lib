@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 
 import CloseIcon from "@icons/close.png";
-import IToast from "types/IToast";
+import { IToast } from "types/IToast";
 import { selectCategoryStyle } from "@helpers/selectCategoryStyle";
-import IToastConfig from "types/IToastConfig";
+import { IToastConfig } from "types/IToastConfig";
 import {
   Wrapper,
   Icon,
