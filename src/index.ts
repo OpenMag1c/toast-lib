@@ -27,8 +27,3 @@ export {
   successToastStyle,
   warningToastStyle,
 } from "./constants";
-export * from "./assets/icons/check.png";
-export * from "./assets/icons/close.png";
-export * from "./assets/icons/malware.png";
-export * from "./assets/icons/question.png";
-export * from "./assets/icons/warning.png";
