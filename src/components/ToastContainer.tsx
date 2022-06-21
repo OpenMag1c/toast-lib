@@ -1,5 +1,4 @@
-import React, { FC, useState, useEffect, useReducer, useRef } from "react";
-import { flushSync } from "react-dom";
+import React, { FC, useState, useEffect, useRef } from "react";
 
 import { Toast } from "@components/Toast";
 import IToast from "types/IToast";
@@ -7,6 +6,7 @@ import { IToastService, toastActionType } from "@service/toastService";
 import ToastManager from "@service/toastManager";
 import IToastConfig from "types/IToastConfig";
 import { defaultToastConfig } from "@constants/defaultToastConfig";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 export interface ToastListProps {
   toasts?: IToast[];
@@ -16,7 +16,6 @@ export interface ToastListProps {
 export const ToastContainer: FC<ToastListProps> = () => {
   const serviceRef = useRef<IToastService>();
   const [config, setConfig] = useState<IToastConfig>(defaultToastConfig);
-  const [, forceUpdate] = useReducer((x) => x + 1, 0);
   const [toasts, setToasts] = useState<IToast[]>([]);
   const [toastDeleteId, setToastDeleteId] = useState<string>();
 
@@ -46,11 +45,13 @@ export const ToastContainer: FC<ToastListProps> = () => {
   };
 
   return (
-    <Toast
-      toastList={toasts}
-      config={config}
-      deleteToast={deleteToast}
-      toastDeleteId={toastDeleteId}
-    />
+    <ErrorBoundary>
+      <Toast
+        toastList={toasts}
+        config={config}
+        deleteToast={deleteToast}
+        toastDeleteId={toastDeleteId}
+      />
+    </ErrorBoundary>
   );
 };

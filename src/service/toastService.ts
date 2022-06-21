@@ -3,7 +3,6 @@ import IToast from "types/IToast";
 import { defaultToastConfig } from "@constants/defaultToastConfig";
 
 export type toastCallType = (text: string) => void;
-
 export type toastActionType = (toasts: IToast[], id?: string) => void;
 
 export interface IToastService {

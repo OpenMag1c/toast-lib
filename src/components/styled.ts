@@ -1,9 +1,4 @@
-import {
-  bottomLeft,
-  bottomRight,
-  topLeft,
-  topRight,
-} from "@constants/styled/position";
+import { bottomLeft, bottomRight, topLeft, topRight } from "@styled/position";
 import { getToastAnimation } from "@helpers/getToastAnimation";
 import styled from "styled-components";
 import { ToastPosition } from "types/enums/toastPosition";

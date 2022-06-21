@@ -1,8 +1,8 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 
 import CloseIcon from "@icons/close.png";
 import IToast from "types/IToast";
-import selectCategoryStyle from "@helpers/selectCategoryStyle";
+import { selectCategoryStyle } from "@helpers/selectCategoryStyle";
 import IToastConfig from "types/IToastConfig";
 import {
   Wrapper,
@@ -14,7 +14,7 @@ import {
   ToastContainer,
 } from "./styled";
 
-interface ToastProps {
+export interface ToastProps {
   toastList: IToast[];
   config: IToastConfig;
   deleteToast: (id: string) => () => void;

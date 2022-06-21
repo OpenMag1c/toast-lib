@@ -14,7 +14,10 @@ type selectCategoryStyleType = (
   logo: string;
 };
 
-const selectCategoryStyle: selectCategoryStyleType = (category, config) => {
+export const selectCategoryStyle: selectCategoryStyleType = (
+  category,
+  config
+) => {
   switch (category) {
     case ToastCategory.Info:
       return { logo: questionLogo, style: config.infoStyle };
@@ -28,5 +31,3 @@ const selectCategoryStyle: selectCategoryStyleType = (category, config) => {
       return { logo: successLogo, style: config.successStyle };
   }
 };
-
-export default selectCategoryStyle;
