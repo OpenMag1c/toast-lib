@@ -1,22 +1,37 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { useToastService } from "@hooks/useToastService";
+import { defaultToastConfig } from "@constants/defaultToastConfig";
+import IToastConfig from "types/IToastConfig";
+import { ToastDuration } from "types/enums/toastDuration";
+import { ToastPosition } from "types/enums/toastPosition";
+import {
+  errorToastStyle,
+  infoToastStyle,
+  successToastStyle,
+  warningToastStyle,
+} from "@constants/toastStyles";
+import { ToastAnimation } from "types/enums/toastAnimation";
 import { ToastContainer } from "./ToastContainer";
 
 export default {
   title: "Components/ToastList",
   component: ToastContainer,
+  parameters: {
+    config: defaultToastConfig,
+  },
 } as ComponentMeta<typeof ToastContainer>;
 
-const Template: ComponentStory<typeof ToastContainer> = () => {
-  const { info, warning, error, success } = useToastService();
-
-  const infoClick = () => {
-    info("info toast");
-  };
+const Template: ComponentStory<typeof ToastContainer> = ({ ...args }) => {
+  const { config } = args;
+  const { info, warning, error, success } = useToastService(config);
 
   const warningClick = () => {
     warning("warning toast");
+  };
+
+  const infoClick = () => {
+    info("info toast");
   };
 
   const errorClick = () => {
@@ -47,3 +62,15 @@ const Template: ComponentStory<typeof ToastContainer> = () => {
 };
 
 export const Test1 = Template.bind({});
+Test1.args = {
+  config: {
+    duration: ToastDuration.Quick,
+    position: ToastPosition.BottomLeft,
+    animation: ToastAnimation.Movement,
+    margin: 5,
+    infoStyle: infoToastStyle,
+    warningStyle: warningToastStyle,
+    errorStyle: errorToastStyle,
+    successStyle: successToastStyle,
+  } as IToastConfig,
+};

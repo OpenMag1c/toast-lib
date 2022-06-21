@@ -1,4 +1,4 @@
-import defaultToastConfig from "@constants/toastDefault";
+import { defaultToastConfig } from "@constants/defaultToastConfig";
 import IToastConfig from "types/IToastConfig";
 import { IToastService, toastService } from "./toastService";
 
@@ -15,7 +15,7 @@ const ToastManager = (function () {
 
   return {
     getToastService(config?: IToastConfig): IToastService {
-      if (!service) {
+      if (!service || config) {
         service = createToastService(config);
       }
       return service;

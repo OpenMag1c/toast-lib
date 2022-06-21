@@ -1,17 +1,20 @@
 import IToastConfig from "types/IToastConfig";
 import IToast from "types/IToast";
-import defaultToastConfig from "../constants/toastDefault";
+import { defaultToastConfig } from "@constants/defaultToastConfig";
 
 export type toastCallType = (text: string) => void;
 
-export type toastActionType = (toasts: IToast[]) => void;
+export type toastActionType = (toasts: IToast[], id?: string) => void;
 
 export interface IToastService {
   config: IToastConfig;
   toasts: IToast[];
-  observers: toastActionType[];
-  subscribe: (fn: toastActionType) => void;
-  unsubscribe: (fn: toastActionType) => void;
+  observersAdd: toastActionType[];
+  observersDelete: toastActionType[];
+  subscribeAdd: (fn: toastActionType) => void;
+  unsubscribeAdd: (fn: toastActionType) => void;
+  subscribeDelete: (fn: toastActionType) => void;
+  unsubscribeDelete: (fn: toastActionType) => void;
   addToast: (toast: IToast) => void;
   deleteToast: (id: string) => void;
 }
@@ -19,23 +22,36 @@ export interface IToastService {
 export const toastService: IToastService = {
   config: defaultToastConfig,
   toasts: [],
-  observers: [],
+  observersAdd: [],
+  observersDelete: [],
 
   addToast(toast) {
     this.toasts.push(toast);
-    this.observers.forEach((subscriber) => subscriber(this.toasts));
+    this.observersAdd.forEach((subscriber) => subscriber(this.toasts));
   },
 
   deleteToast(id) {
     this.toasts = this.toasts.filter((toast) => toast.id !== id);
-    this.observers.forEach((subscriber) => subscriber(this.toasts));
+    this.observersDelete.forEach((subscriber) => subscriber(this.toasts, id));
   },
 
-  subscribe(fn) {
-    this.observers.push(fn);
+  subscribeAdd(fn) {
+    this.observersAdd.push(fn);
   },
 
-  unsubscribe(fn) {
-    this.observers = this.observers.filter((subscriber) => subscriber !== fn);
+  unsubscribeAdd(fn) {
+    this.observersAdd = this.observersAdd.filter(
+      (subscriber) => subscriber !== fn
+    );
+  },
+
+  subscribeDelete(fn) {
+    this.observersDelete.push(fn);
+  },
+
+  unsubscribeDelete(fn) {
+    this.observersDelete = this.observersDelete.filter(
+      (subscriber) => subscriber !== fn
+    );
   },
 };

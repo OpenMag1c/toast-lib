@@ -9,6 +9,7 @@
       "@themes/*": ["themes/*"],
       "@icons/*": ["assets/icons/*"], 
       "@constants/*": ["constants/*"], 
+      "@styled/*": ["constants/styled/*"], 
       "@helpers/*": ["helpers/*"], 
       "@hooks/*": ["hooks/*"], 
     },

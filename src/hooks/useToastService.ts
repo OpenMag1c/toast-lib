@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { IToastService } from "@service/toastService";
 import IToastConfig from "types/IToastConfig";
 import ToastManager from "@service/toastManager";

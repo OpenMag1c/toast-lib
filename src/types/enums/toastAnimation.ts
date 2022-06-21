@@ -1,5 +1,5 @@
 export enum ToastAnimation {
   Appearance,
-  Nomination,
+  Movement,
   NoAnimation,
 }
