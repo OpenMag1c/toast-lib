@@ -2,7 +2,8 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
-import image from "rollup-plugin-image";
+import url from "@rollup/plugin-url";
+import svgr from "@svgr/rollup";
 
 const packageJson = require("./package.json");
 
@@ -25,7 +26,10 @@ export default {
     resolve(),
     commonjs(),
     typescript({ useTsconfigDeclarationDir: true }),
-    image(),
+    url({
+      include: "./src/assets/icons/*.svg",
+    }),
+    svgr({ exportType: "named" }),
   ],
   external: ["styled-components"],
 };

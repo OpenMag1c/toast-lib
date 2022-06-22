@@ -1,10 +1,8 @@
 import { IToastStyle } from "types/IToastStyles";
-import questionLogo from "@icons/question.svg";
-import warningLogo from "@icons/warning.svg";
-import errorLogo from "@icons/malware.svg";
-import successLogo from "@icons/check.svg";
+
 import { IToastConfig } from "types/IToastConfig";
 import { ToastCategory } from "types/enums/toastCategory";
+import { errorIcon, infoIcon, successIcon, warningIcon } from "@assets/icons";
 
 type selectCategoryStyleType = (
   category: ToastCategory,
@@ -20,14 +18,14 @@ export const selectCategoryStyle: selectCategoryStyleType = (
 ) => {
   switch (category) {
     case ToastCategory.Info:
-      return { logo: questionLogo, style: config.infoStyle };
+      return { logo: infoIcon, style: config.infoStyle };
     case ToastCategory.Warning:
-      return { logo: warningLogo, style: config.warningStyle };
+      return { logo: warningIcon, style: config.warningStyle };
     case ToastCategory.Error:
-      return { logo: errorLogo, style: config.errorStyle };
+      return { logo: errorIcon, style: config.errorStyle };
     case ToastCategory.Success:
-      return { logo: successLogo, style: config.successStyle };
+      return { logo: successIcon, style: config.successStyle };
     default:
-      return { logo: successLogo, style: config.successStyle };
+      return { logo: successIcon, style: config.successStyle };
   }
 };
