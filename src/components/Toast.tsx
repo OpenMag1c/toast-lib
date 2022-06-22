@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import CloseIcon from "@icons/close.png";
+import closeIcon from "@assets/icons/close.svg";
 import { IToast } from "types/IToast";
 import { selectCategoryStyle } from "@helpers/selectCategoryStyle";
 import { IToastConfig } from "types/IToastConfig";
@@ -50,7 +50,7 @@ export const Toast: FC<ToastProps> = ({
             </Text>
             <ButtonWrapper>
               <CloseButton onClick={deleteToast(toast.id)}>
-                <CloseImg src={CloseIcon} />
+                <CloseImg src={closeIcon} />
               </CloseButton>
             </ButtonWrapper>
           </ToastContainer>

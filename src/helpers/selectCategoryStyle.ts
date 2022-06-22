@@ -1,8 +1,8 @@
 import { IToastStyle } from "types/IToastStyles";
-import questionLogo from "@icons/question.png";
-import warningLogo from "@icons/warning.png";
-import errorLogo from "@icons/malware.png";
-import successLogo from "@icons/check.png";
+import questionLogo from "@icons/question.svg";
+import warningLogo from "@icons/warning.svg";
+import errorLogo from "@icons/malware.svg";
+import successLogo from "@icons/check.svg";
 import { IToastConfig } from "types/IToastConfig";
 import { ToastCategory } from "types/enums/toastCategory";
 
