@@ -18,15 +18,9 @@ export interface ToastProps {
   toastList: IToast[];
   config: IToastConfig;
   deleteToast: (id: string) => () => void;
-  toastDeleteId?: string;
 }
 
-export const Toast: FC<ToastProps> = ({
-  toastList,
-  config,
-  deleteToast,
-  toastDeleteId,
-}) => {
+export const Toast: FC<ToastProps> = ({ toastList, config, deleteToast }) => {
   const { position, margin, animation } = config;
 
   return (
@@ -34,14 +28,13 @@ export const Toast: FC<ToastProps> = ({
       {toastList.map((toast) => {
         const { logo, style } = selectCategoryStyle(toast.category, config);
         const { backgroundColor, font, textColor } = style;
-        const isDelete = toast.id === toastDeleteId;
         return (
           <ToastContainer
             color={backgroundColor}
             key={toast.id}
             margin={margin}
             position={position}
-            isDelete={isDelete}
+            isDelete={toast.isDelete}
             animation={animation}
           >
             <Icon src={logo} />

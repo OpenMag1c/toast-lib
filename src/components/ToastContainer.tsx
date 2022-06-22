@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect, useCallback } from "react";
 
 import { Toast } from "@components/Toast";
 import { IToast } from "types/IToast";
@@ -14,10 +14,11 @@ export interface ToastListProps {
 }
 
 export const ToastContainer: FC<ToastListProps> = () => {
-  const serviceRef = useRef<IToastService>();
+  const [service] = useState<IToastService>(() =>
+    ToastManager.getToastService()
+  );
   const [config, setConfig] = useState<IToastConfig>(defaultToastConfig);
   const [toasts, setToasts] = useState<IToast[]>([]);
-  const [toastDeleteId, setToastDeleteId] = useState<string>();
 
   useEffect(() => {
     const onAdd: toastActionType = (data) => {
@@ -25,33 +26,40 @@ export const ToastContainer: FC<ToastListProps> = () => {
     };
 
     const onDelete: toastActionType = (data, id) => {
-      setToastDeleteId(id);
-      setTimeout(() => setToasts([...data]), 500);
+      setToasts((prevToasts) =>
+        prevToasts.map((toast) =>
+          toast.id === id ? { ...toast, isDelete: true } : toast
+        )
+      );
+      setTimeout(
+        () =>
+          setToasts((prevToasts) =>
+            prevToasts.filter((toast) => !toast.isDelete)
+          ),
+        500
+      );
     };
 
-    serviceRef.current = ToastManager.getToastService();
-    setConfig(serviceRef.current.config);
-    serviceRef.current.subscribeAdd(onAdd);
-    serviceRef.current.subscribeDelete(onDelete);
+    setConfig(service.config);
+    service.subscribeAdd(onAdd);
+    service.subscribeDelete(onDelete);
 
     return () => {
-      serviceRef.current?.unsubscribeAdd(onAdd);
-      serviceRef.current?.unsubscribeDelete(onDelete);
+      service.unsubscribeAdd(onAdd);
+      service.unsubscribeDelete(onDelete);
     };
-  }, []);
+  }, [service, toasts]);
 
-  const deleteToast = (id: string) => () => {
-    serviceRef.current?.deleteToast(id);
-  };
+  const deleteToast = useCallback(
+    (id: string) => () => {
+      service.deleteToast(id);
+    },
+    [service]
+  );
 
   return (
     <ErrorBoundary>
-      <Toast
-        toastList={toasts}
-        config={config}
-        deleteToast={deleteToast}
-        toastDeleteId={toastDeleteId}
-      />
+      <Toast toastList={toasts} config={config} deleteToast={deleteToast} />
     </ErrorBoundary>
   );
 };

@@ -5,5 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 export const createToast = (text: string, category: ToastCategory): IToast => ({
   text,
   category,
+  isDelete: false,
   id: uuidv4(),
 });
