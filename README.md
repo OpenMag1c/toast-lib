@@ -71,7 +71,7 @@ const Example: = () => {
 };
 ```
 
-## Configuration(config file):
+## Configuration:
 
 ```javascript
 export const yourConfig: IToastConfig = {
