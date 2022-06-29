@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import closeIcon from "@assets/icons/close.svg";
+import { closeIcon } from "@assets/icons";
 import { IToast } from "types/IToast";
 import { selectCategoryStyle } from "@helpers/selectCategoryStyle";
 import { IToastConfig } from "types/IToastConfig";

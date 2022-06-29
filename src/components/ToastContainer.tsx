@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 
 import { Toast } from "@components/Toast";
 import { IToast } from "types/IToast";
@@ -6,14 +7,11 @@ import { IToastService, toastActionType } from "@service/toastService";
 import { ToastManager } from "@service/toastManager";
 import { IToastConfig } from "types/IToastConfig";
 import { defaultToastConfig } from "@constants/defaultToastConfig";
+import { usePortalRef } from "@hooks/usePortalRef";
 import { ErrorBoundary } from "./ErrorBoundary";
 
-export interface ToastListProps {
-  toasts?: IToast[];
-  config?: IToastConfig;
-}
-
-export const ToastContainer: FC<ToastListProps> = () => {
+export const ToastContainer: FC = () => {
+  const { portal } = usePortalRef();
   const [service] = useState<IToastService>(() =>
     ToastManager.getToastService()
   );
@@ -57,9 +55,10 @@ export const ToastContainer: FC<ToastListProps> = () => {
     [service]
   );
 
-  return (
+  return createPortal(
     <ErrorBoundary>
       <Toast toastList={toasts} config={config} deleteToast={deleteToast} />
-    </ErrorBoundary>
+    </ErrorBoundary>,
+    portal as Element
   );
 };

@@ -68,9 +68,5 @@ Test1.args = {
     position: ToastPosition.BottomRight,
     animation: ToastAnimation.Movement,
     margin: 5,
-    infoStyle: infoToastStyle,
-    warningStyle: warningToastStyle,
-    errorStyle: errorToastStyle,
-    successStyle: successToastStyle,
   } as IToastConfig,
 };

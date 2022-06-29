@@ -8,7 +8,7 @@ export const ToastManager = (function () {
   function createToastService(config?: IToastConfig): IToastService {
     const object = {
       ...toastService,
-      config: config || defaultToastConfig,
+      config: { ...defaultToastConfig, ...config },
     } as IToastService;
     return object;
   }
